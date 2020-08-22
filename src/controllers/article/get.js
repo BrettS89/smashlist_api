@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const { articleId } = req.params;
     let article = await Article.findById(articleId)
       .populate('user', ['_id', 'firstName', 'lastName', 'photo']);
-    
+
     if (!article) throwError(404, 'Article not found');
 
     if (user) {
